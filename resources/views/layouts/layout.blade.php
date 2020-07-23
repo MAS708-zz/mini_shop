@@ -9,20 +9,20 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('../assets/images/favicon.png')}}">
     <title>Mini Shop - The Ultimate Mini Shop</title>
     <!-- This page plugin CSS -->
-    <link href="../assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="{{asset('../assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="../assets/libs/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" />
-    <link href="../assets/libs/morris.js/morris.css" rel="stylesheet">
-    <link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
-    <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link href="../assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <link href="{{asset('../assets/libs/fullcalendar/dist/fullcalendar.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('../assets/libs/morris.js/morris.css" rel="stylesheet')}}">
+    <link href="{{asset('../assets/extra-libs/c3/c3.min.css" rel="stylesheet')}}">
+    <link href="{{asset('../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet')}}">
+    <link href="{{asset('../assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet" />
     <!-- Custom CSS -->
-    <link href="../dist/css/style.min.css" rel="stylesheet">
+    <link href="{{asset('../dist/css/style.min.css')}}" rel="stylesheet">
     <!-- This Page CSS -->
-    <link rel="stylesheet" type="text/css" href="../assets/extra-libs/prism/prism.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('../assets/extra-libs/prism/prism.css')}}">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -59,20 +59,20 @@
                     <!-- ============================================================== -->
                     <div class="navbar-brand">
                         <!-- Logo icon -->
-                        <a href="/dashboard">
+                        <a href="/">
                             <b class="logo-icon">
                                 <!-- Dark Logo icon -->
-                                <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                                <img src="{{asset('../assets/images/logo-icon.png')}}" alt="homepage" class="dark-logo" />
                                 <!-- Light Logo icon -->
-                                <img src="../assets/images/logo-icon.png" alt="homepage" class="light-logo" />
+                                <img src="{{asset('../assets/images/logo-icon.png')}}" alt="homepage" class="light-logo" />
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text -->
                             <span class="logo-text">
                                 <!-- dark Logo text -->
-                                <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                                <img src="{{asset('../assets/images/logo-text.png')}}" alt="homepage" class="dark-logo" />
                                 <!-- Light Logo text -->
-                                <img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                                <img src="{{asset('../assets/images/logo-light-text.png')}}" class="light-logo" alt="homepage" />
                             </span>
                         </a>
                     </div>
@@ -224,7 +224,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                <img src="../assets/images/users/1.jpg" alt="user" class="rounded-circle"
+                                <img src="{{asset('../assets/images/users/1.jpg')}}" alt="user" class="rounded-circle"
                                     width="40">
                                 <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
                                         class="text-dark">Customer</span> <i data-feather="chevron-down"
@@ -366,25 +366,25 @@
     <!-- ============================================================== -->
    <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="{{asset('../assets/libs/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{asset('../assets/libs/popper.js/dist/umd/popper.min.js')}}"></script>
+    <script src="{{asset('../assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <!-- apps -->
     <!-- apps -->
-    <script src="../dist/js/app-style-switcher.js"></script>
-    <script src="../dist/js/feather.min.js"></script>
-    <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="../dist/js/sidebarmenu.js"></script>
+    <script src="{{asset('../dist/js/app-style-switcher.js')}}"></script>
+    <script src="{{asset('../dist/js/feather.min.js')}}"></script>
+    <script src="{{asset('../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
+    <script src="{{asset('../dist/js/sidebarmenu.js')}}"></script>
     <!--Custom JavaScript -->
-    <script src="../dist/js/custom.min.js"></script>
+    <script src="{{asset('../dist/js/custom.min.js')}}"></script>
     <!--This page JavaScript -->
-    <script src="../assets/extra-libs/c3/d3.min.js"></script>
-    <script src="../assets/extra-libs/c3/c3.min.js"></script>
-    <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
-    <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="../assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="../assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="../dist/js/pages/dashboards/dashboard1.min.js"></script> 
+    <script src="{{asset('../assets/extra-libs/c3/d3.min.js')}}"></script>
+    <script src="{{asset('../assets/extra-libs/c3/c3.min.js')}}"></script>
+    <script src="{{asset('../assets/libs/chartist/dist/chartist.min.js')}}"></script>
+    <script src="{{asset('../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js')}}"></script>
+    <script src="{{asset('../assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js')}}"></script>
+    <script src="{{asset('../assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js')}}"></script>
+    <script src="{{asset('../dist/js/pages/dashboards/dashboard1.min.js')}}"></script> 
 </body>
 
 </html>
