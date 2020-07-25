@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use File;
 
 class ProductController extends Controller
 {
@@ -27,6 +28,8 @@ class ProductController extends Controller
     public function create()
     {
         //Create New Product
+        // $category = Product::all();
+        // ,compact('category')
         return view('products.create');
     }
 
@@ -39,26 +42,31 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
-        
+
         $request->validate  ([
             'name' => 'required',
             'price' => 'required|numeric',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'                 
-            ]);    
-            
-            $file = $request->file('image');                              
-            $new_name =  rand() . '.' .  $file->getClientOriginalExtension();
-            $file->move(public_path('images'), $new_name);
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'desc' => 'nullable'
+            // 'product_category_id' => 'required',
+            ]);
+
+                $file = $request->file('image');
+                $new_name =  rand() . '.' .  $file->getClientOriginalExtension();
+                $direction = $file->move('images', $new_name);
+
             $form_data = array(
                 'name' => $request ->name,
                 'price' => $request ->price,
-                'image' => $new_name,
-            );                    
+                'image' => $direction,
+                'desc' => $request ->desc,
+                // 'product_category_id' => $request->product_category_id,
+            );
             Product::create($form_data);
             return redirect('/product')->with('status', 'New Product Created !');
             // Product::create($request->all());
         }
-        
+
         /**
      * Display the specified resource.
      *
@@ -68,7 +76,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         //Show Products
-        return view('products.show', compact('product'));    
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -92,21 +100,54 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+
         //Update for New Config
         $request->validate  ([
             'name' => 'required',
             'price' => 'required|numeric',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-        ]);
-        
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'desc' => 'nullable'
+
+            ]);
+
+            // if (isset($product['image'])) {
+            //     $file = $request->file('image');
+            //     $name = rand() . '.' .  $file->getClientOriginalExtension();
+            //     $file->move('images', $name);
+
+            //         if (file_exists($name =rand() . '.' .  $file->getClientOriginalExtension()))
+            //         {
+            //             unlink(public_path($name));
+            //         };
+            //         //Update Image
+            //     $product->image = $name;
+            // }
+
+
+
+            if(isset($product['image']))
+            {
+
+                $file = $request->file('image');
+                $new_name =  rand() . '.' .  $file->getClientOriginalExtension();
+                $direction = $file->move('images', $new_name);
+
+
+                    if(file_exists($product->image = $direction)){
+                            $gambar = Product::where('id',$product->id)->first();
+                            File::delete($gambar->image);
+                        }
+                        $product->image = $direction;
+            }
+
         Product::where('id', $product->id)
                         ->update([
                             'name' => $request->name,
-                            'price' => $request->price,                       
-                            'image' => $request->image                       
+                            'price' => $request->price,
+                            'desc' => $request->desc
                         ]);
 
-        return redirect('/product')->with('status', 'Product has been Edited!');
+        return redirect('/product/'.$product->id)->with('status', 'Product has been Edited!');
     }
 
     /**
@@ -117,7 +158,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //delete product    
+        //
+        $gambar = Product::where('id',$product->id)->first();
+        File::delete($gambar->image);
+
+        //delete product
         Product::destroy($product->id);
         return redirect('/product')->with('status', 'Product has been deleted!');
     }

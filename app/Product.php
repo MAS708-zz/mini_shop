@@ -7,11 +7,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
+    protected $table = 'products';
     use SoftDeletes;
-    // protected $table ='products';
     protected $fillable = [
-        'name', 
-        'price', 
-        'image'
+        'name',
+        'price',
+        'image',
+        'product_category_id',
+        'desc',
+
     ];
+            public function product_categories(){
+                return $this->hasOne(product_categories::class);
+            }
 }

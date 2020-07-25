@@ -7,11 +7,11 @@
     <a href="/">Home</a><a href="/product">/Product</a>
 @endsection
 
-@section('container') 
+@section('container')
 
     <div class="col-lg-4 col-md-12">
         <div class="card" style="width: 18rem;">
-            <img src="{{ asset($product->image) }}" class="card-img-top" alt="Responsive image">
+            <img src="{{ asset($product->image) }}" class="img-thumbnail" alt="Responsive image">
                 <div class="card-body">
                     <h5 class="card-title">{{$product->name}}</h5>
                     <p class="card-text">{{$product->price}}</p>
@@ -25,15 +25,20 @@
                     <a href ="/product"  class="d-inline">Back</a>
                 </div>
         </div>
+            <div class="card">
+                    <div class="card-body">
+                        <p class="card-text">{{ $product->desc }}</p>
+                    </div>
+            </div>
     </div>
-    
+
 @endsection
-    
+
     <!-- <ul class="list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-center">                        
+        <li class="list-group-item d-flex justify-content-between align-items-center">
             {{ $product->name }}
-            {{ $product->price }}                     
-        </li>                                                                                           
+            {{ $product->price }}
+        </li>
     </ul> -->
     <!-- <a href="{{ $product->id }}/edit" type="submit" class="btn btn-primary" >Edit</a>
     <form action ="{{ $product->id }}" method="post" class="d-inline">

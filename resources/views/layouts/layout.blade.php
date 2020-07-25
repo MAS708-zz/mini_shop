@@ -264,7 +264,7 @@
         <!-- End Topbar header -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
-        
+
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
         <aside class="left-sidebar" data-sidebarbg="skin6">
@@ -275,12 +275,15 @@
                     <ul id="sidebarnav">
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/"
                             aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
-                                 class="hide-menu">Home</span></a></li>       
+                                 class="hide-menu">Home</span></a></li>
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Menu</span></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/product"
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/product')}}"
                                 aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
                                     class="hide-menu">Product</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/productCategories')}}"
+                        aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
+                        class="hide-menu">Add Categories</span></a></li>
                         <li class="list-divider"></li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/authlogin')}}"
                                 aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
@@ -308,10 +311,10 @@
                         <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">@yield('subtitle')</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb m-0 p-0"> 
-                                        <!--Template BreadCrumbs-->                                      
+                                <ol class="breadcrumb m-0 p-0">
+                                        <!--Template BreadCrumbs-->
                                             @yield('breadcrumb')
-                                        <!--Template BreadCrumbs-->   
+                                        <!--Template BreadCrumbs-->
                                     </li>
                                 </ol>
                             </nav>
@@ -336,24 +339,24 @@
                 <!-- ============================================================== -->
                     <!-- <div class="container-fluid">-->
 
-                        <!--Template Content-->   
+                        <!--Template Content-->
 
-                            @yield('container')    
-                        
-                            <!-- End Template Content-->    
+                            @yield('container')
 
-                            <!-- footer -->        
+                            <!-- End Template Content-->
+
+                            <!-- footer -->
                             <footer class="footer text-center text-muted">
                                 All Rights Reserved by Adminmart. Designed and Developed by <a
                                     href="https://wrappixel.com">WrapPixel</a>.
-                            </footer>           
+                            </footer>
                             <!-- End footer -->
-                   
+
                      <!-- </div> -->
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
-            
+
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
@@ -384,7 +387,7 @@
     <script src="{{asset('../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js')}}"></script>
     <script src="{{asset('../assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js')}}"></script>
     <script src="{{asset('../assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js')}}"></script>
-    <script src="{{asset('../dist/js/pages/dashboards/dashboard1.min.js')}}"></script> 
+    <script src="{{asset('../dist/js/pages/dashboards/dashboard1.min.js')}}"></script>
 </body>
 
 </html>
