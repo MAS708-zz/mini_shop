@@ -100,6 +100,9 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        //
+          $gambar = Product::where('id',$product->id)->first();
+          File::delete($gambar->image);
 
         //Update for New Config
         $request->validate  ([
@@ -108,43 +111,20 @@ class ProductController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'desc' => 'nullable'
 
-            ]);
-
-            // if (isset($product['image'])) {
-            //     $file = $request->file('image');
-            //     $name = rand() . '.' .  $file->getClientOriginalExtension();
-            //     $file->move('images', $name);
-
-            //         if (file_exists($name =rand() . '.' .  $file->getClientOriginalExtension()))
-            //         {
-            //             unlink(public_path($name));
-            //         };
-            //         //Update Image
-            //     $product->image = $name;
-            // }
+        ]);
 
 
-
-            if(isset($product['image']))
-            {
-
-                $file = $request->file('image');
-                $new_name =  rand() . '.' .  $file->getClientOriginalExtension();
-                $direction = $file->move('images', $new_name);
-
-
-                    if(file_exists($product->image = $direction)){
-                            $gambar = Product::where('id',$product->id)->first();
-                            File::delete($gambar->image);
-                        }
-                        $product->image = $direction;
-            }
+        $file = $request->file('image');
+        $new_name =  rand() . '.' .  $file->getClientOriginalExtension();
+        $direction = $file->move('images', $new_name);
 
         Product::where('id', $product->id)
                         ->update([
                             'name' => $request->name,
                             'price' => $request->price,
+                            'image' => $direction,
                             'desc' => $request->desc
+
                         ]);
 
         return redirect('/product/'.$product->id)->with('status', 'Product has been Edited!');
