@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 use File;
 
 class ProductController extends Controller
@@ -43,26 +44,34 @@ class ProductController extends Controller
     {
         //
 
-        $request->validate  ([
-            'name' => 'required',
+        $this->validate  ($request, [
+            'name' => 'required|string',
             'price' => 'required|numeric',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'desc' => 'nullable'
             // 'product_category_id' => 'required',
             ]);
 
-                $file = $request->file('image');
-                $new_name =  rand() . '.' .  $file->getClientOriginalExtension();
-                $direction = $file->move('images', $new_name);
+            $input = $request->all();
+            $input['image'] = null;
+    
+            if ($request->hasFile('image')){
+                $input['image'] = 'images/'.str_slug($input['name'], '-').'.'.$request->image->getClientOriginalExtension();
+                $request->image->move(public_path('images/'), $input['image']);
+            }
 
-            $form_data = array(
-                'name' => $request ->name,
-                'price' => $request ->price,
-                'image' => $direction,
-                'desc' => $request ->desc,
+        //        $file = $request->file('image');
+        //        $new_name =  rand() . '.' .  $file->getClientOriginalExtension();
+        //        $direction = $file->move('images', $new_name);
+
+        //    $form_data = array(
+        //        'name' => $request ->name,
+        //        'price' => $request ->price,
+        //        'image' => $direction,
+        //        'desc' => $request ->desc,
                 // 'product_category_id' => $request->product_category_id,
-            );
-            Product::create($form_data);
+        //    );
+            Product::create($input);
             return redirect('/product')->with('status', 'New Product Created !');
             // Product::create($request->all());
         }
@@ -98,34 +107,49 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
         //
-          $gambar = Product::where('id',$product->id)->first();
-          File::delete($gambar->image);
+    //      $gambar = Product::where('id',$product->id)->first();
+    //      File::delete($gambar->image);
 
         //Update for New Config
-        $request->validate  ([
+        $this->validate  ($request ,[
             'name' => 'required',
             'price' => 'required|numeric',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        //    'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'desc' => 'nullable'
 
         ]);
 
+        $input = $request->all();
+        $product = Product::findOrFail($id);
 
-        $file = $request->file('image');
-        $new_name =  rand() . '.' .  $file->getClientOriginalExtension();
-        $direction = $file->move('images', $new_name);
+        $input['image'] = $product->image;
 
-        Product::where('id', $product->id)
-                        ->update([
-                            'name' => $request->name,
-                            'price' => $request->price,
-                            'image' => $direction,
-                            'desc' => $request->desc
+        if ($request->hasFile('image')){
+            if (!$product->image == NULL){
+                unlink(public_path($product->image));
+            }
+            $input['image'] = 'images/'.str_slug($input['name'], '-').'.'.$request->image->getClientOriginalExtension();
+            $request->image->move(public_path('images/'), $input['image']);  
+        }
 
-                        ]);
+        $product->update($input);
+
+
+    //    $file = $request->file('image');
+    //    $new_name =  rand() . '.' .  $file->getClientOriginalExtension();
+    //    $direction = $file->move('images', $new_name);
+
+    //    Product::where('id', $product->id)
+    //                    ->update([
+    //                        'name' => $request->name,
+    //                        'price' => $request->price,
+    //                        'image' => $direction,
+    //                        'desc' => $request->desc
+
+    //                    ]);
 
         return redirect('/product/'.$product->id)->with('status', 'Product has been Edited!');
     }
@@ -136,14 +160,23 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
         //
-        $gambar = Product::where('id',$product->id)->first();
-        File::delete($gambar->image);
+        //$gambar = Product::where('id',$product->id)->first();
+        //File::delete($gambar->image);
 
         //delete product
-        Product::destroy($product->id);
+        //Product::destroy($product->id);
+        $product = Product::findOrFail($id);
+
+        if (!$product->image == NULL){
+            unlink(public_path($product->image));
+        }
+
+        Product::destroy($id);
         return redirect('/product')->with('status', 'Product has been deleted!');
     }
+
+    
 }
