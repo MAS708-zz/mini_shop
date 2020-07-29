@@ -53,11 +53,14 @@ class ProductController extends Controller
             ]);
 
             $input = $request->all();
+        //    $image = $request->file('image');
             $input['image'] = null;
     
             if ($request->hasFile('image')){
-                $input['image'] = 'images/'.str_slug($input['name'], '-').'.'.$request->image->getClientOriginalExtension();
+                $input['image'] = 'images/'.rand().'.'.$request->image->getClientOriginalExtension();
                 $request->image->move(public_path('images/'), $input['image']);
+        //        $new_name =  rand() . '.' .  $request->image->getClientOriginalExtension();
+        //        $request->image->move('images', $new_name);
             }
 
         //        $file = $request->file('image');
@@ -123,6 +126,7 @@ class ProductController extends Controller
         ]);
 
         $input = $request->all();
+    //    $image = $request->file('image');
         $product = Product::findOrFail($id);
 
         $input['image'] = $product->image;
@@ -131,8 +135,10 @@ class ProductController extends Controller
             if (!$product->image == NULL){
                 unlink(public_path($product->image));
             }
-            $input['image'] = 'images/'.str_slug($input['name'], '-').'.'.$request->image->getClientOriginalExtension();
+            $input['image'] = 'images/'.rand().'.'.$request->image->getClientOriginalExtension();
             $request->image->move(public_path('images/'), $input['image']);  
+    //        $new_name =  rand() . '.' .  $request->image->getClientOriginalExtension();
+    //        $request->image->move('images', $new_name);
         }
 
         $product->update($input);
