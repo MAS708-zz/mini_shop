@@ -6,6 +6,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use File;
+use Image;
 
 class ProductController extends Controller
 {
@@ -58,7 +59,12 @@ class ProductController extends Controller
     
             if ($request->hasFile('image')){
                 $input['image'] = 'images/'.rand().'.'.$request->image->getClientOriginalExtension();
-                $request->image->move(public_path('images/'), $input['image']);
+                $destinationPath = public_path('/');
+                $img = Image::make($request->image->getRealPath());
+                $img->resize(200, 200, function ($constraint) {
+        //            $constraint->aspectRatio();
+        //            $constraint->upsize();
+                })->save($destinationPath.'/'.$input['image']);
         //        $new_name =  rand() . '.' .  $request->image->getClientOriginalExtension();
         //        $request->image->move('images', $new_name);
             }
