@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\product_categories;
+use App\Categories;
 
 class productCategoriesController extends Controller
 {
@@ -14,7 +14,7 @@ class productCategoriesController extends Controller
      */
     public function index()
     {
-        $product_categories = product_categories::all();
+        $product_categories = Categories::all();
         return view('productsCategories.index', compact('product_categories'));
     }
 
@@ -23,21 +23,9 @@ class productCategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-
-        $request->validate  ([
-            'name' => 'required',
-            'desc' => 'nullable',
-            ]);
-
-            $form_data = array(
-                'name' => $request ->name,
-                'desc' => $request ->desc,
-            );
-            product_categories::create($form_data);
-            return redirect('/productCategories')->with('status', 'New Product Categories Created !');
-            // Product::create($request->all());
+        return view('productsCategories.create');
     }
 
     /**
@@ -48,7 +36,17 @@ class productCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate  ([
+            'name' => 'required',
+            'desc' => 'nullable',
+        ]);
+
+        $form_data = array(
+            'name' => $request ->name,
+            'desc' => $request ->desc,
+        );
+        Categories::create($form_data);
+        return redirect('/productCategories')->with('status', 'New Product Categories Created !');
     }
 
     /**
@@ -57,10 +55,13 @@ class productCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(product_categories $product_categories)
+    public function show($productCategories)
     {
-        return view('productsCategories.show', compact('product_categories'));
-        // return $product_categories;
+        $category = Categories::find($productCategories)->product;
+        $name_tag = Categories::find($productCategories);
+
+        return view('productsCategories.show', compact( 'category' ), compact( 'name_tag' ));
+
     }
 
     /**

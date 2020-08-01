@@ -24,7 +24,7 @@
                         @foreach( $product_categories as $prod )
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             {{ $prod->name }}
-                            <a href ="{{url('/productCategories')}}/{{ $prod->id }}" class="badge badge-info">detail</a>
+                            <a href ="{{url('/productCategories')}}/{{ $prod->id }}" class="badge badge-info">Show Product</a>
                         </li>
                         @endforeach
                     </ul>

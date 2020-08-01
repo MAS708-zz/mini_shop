@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class product_categories extends Model
+class Categories extends Model
 {
     protected $table = 'product_categories';
     use SoftDeletes;
@@ -14,7 +14,8 @@ class product_categories extends Model
         'desc',
     ];
 
-    public function Product(){
-        return $this->belongsTo(Product::class, 'product_category_id', 'id');
+    public function product()
+    {
+        return $this->hasMany(Product::class,'product_category_id','id');
     }
 }

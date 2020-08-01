@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Categories;
 use App\Product;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -10,11 +11,7 @@ use Image;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         //return Product
@@ -22,25 +19,14 @@ class ProductController extends Controller
         return view('products.index', compact ('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //Create New Product
-        // $category = Product::all();
-        // ,compact('category')
-        return view('products.create');
+        $prod_cat_id = Product::all();
+        $product =Product::with('category')->get();
+        $cat =Categories::all();
+        return view('products.create', compact('product'), compact('cat'), compact('prod_cat_id'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
@@ -49,8 +35,8 @@ class ProductController extends Controller
             'name' => 'required|string',
             'price' => 'required|numeric',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'desc' => 'nullable'
-            // 'product_category_id' => 'required',
+            'desc' => 'nullable',
+            'product_category_id' => 'required',
             ]);
 
             $input = $request->all();
@@ -82,27 +68,15 @@ class ProductController extends Controller
         //    );
             Product::create($input);
             return redirect('/product')->with('status', 'New Product Created !');
-            // Product::create($request->all());
         }
 
-        /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
+    public function show($product)
     {
         //Show Products
-        return view('products.show', compact('product'));
+        $products = Product::find($product);
+        return view('products.show', compact('products'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Product $product)
     {
         //Edit Product

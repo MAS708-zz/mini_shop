@@ -33,23 +33,24 @@
                         @error('image')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 
-                    <label for="exampleFormControlSelect2">Example Categories not Work</label>
-                    <select class="form-control form-control-sm ">
-                        <option>Categories-List</option>
-                        <option>Categories#1</option>
-                        <option>Categories#2</option>
-                        <option>Categories#3</option>
+                   <select name="product_category_id" class="form-control form-control-sm">
+                        <option value="">--Select Category--</option>
+
+                        @foreach ($cat as $c)
+                            <option id="{{ $c->id }}" name = "{{ $c->id }}" value = "{{ $c->id }}"
+                                @if ($c->id == old('product_category_id', $c->id))
+
+                                @endif
+                            >{{ $c->name  }}</option>
+                        @endforeach
+                        @error('product_category_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </select>
 
-                    {{-- <select name="product_category_id" class="form-control form-control-sm">
-                        @foreach ($category as $product)
-                            <option id="{{ $product->product_categories->id }}"
-                                @if ($product->product_categories->id == old('product_category_id', $product->product_categories->id))
-                                    selected="selected"
-                                @endif
-                            >{{ $product->product_categories->name  }}</option>
-                        @endforeach
-                    </select> --}}
+                    {{-- @foreach ($cat as $c)
+
+                            {{ $c->name }}
+
+                    @endforeach --}}
 
                     <div class="form-group">
                         <label for="desc">Description</label>

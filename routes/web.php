@@ -23,6 +23,6 @@ Route::get('/', 'PageController@home');
 // Route::patch('/product/{product}', 'ProductController@update');
 Route::resource('product','ProductController');
 
-Route::get('/productCategories', 'productCategoriesController@index');
-Route::get('/productCategories/{product_categories}', 'productCategoriesController@show');
-// Route::resource('productCategories','productCategoriesController');
+// Route::get('/productCategories', 'productCategoriesController@index');
+// Route::get('/productCategories/{product_categories}', 'productCategoriesController@show');
+Route::resource('productCategories','productCategoriesController');
