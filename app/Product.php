@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    protected $table = 'products';
+
     use SoftDeletes;
     protected $fillable = [
         'name',
@@ -17,7 +17,8 @@ class Product extends Model
         'desc',
 
     ];
-            public function product_categories(){
-                return $this->hasOne(product_categories::class);
+            public function category()
+            {
+               return $this->belongsTo(Categories::class, 'product_category_id', 'id');
             }
 }

@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Categories;
 use App\Product;
 use Illuminate\Http\Request;
 use File;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         //return Product
@@ -20,25 +17,14 @@ class ProductController extends Controller
         return view('products.index', compact ('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //Create New Product
-        // $category = Product::all();
-        // ,compact('category')
-        return view('products.create');
+        $prod_cat_id = Product::all();
+        $product =Product::with('category')->get();
+        $cat =Categories::all();
+        return view('products.create', compact('product'), compact('cat'), compact('prod_cat_id'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
@@ -47,8 +33,8 @@ class ProductController extends Controller
             'name' => 'required',
             'price' => 'required|numeric',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'desc' => 'nullable'
-            // 'product_category_id' => 'required',
+            'desc' => 'nullable',
+            'product_category_id' => 'required',
             ]);
 
                 $file = $request->file('image');
@@ -60,85 +46,65 @@ class ProductController extends Controller
                 'price' => $request ->price,
                 'image' => $direction,
                 'desc' => $request ->desc,
-                // 'product_category_id' => $request->product_category_id,
+                'product_category_id' => $request->product_category_id,
             );
             Product::create($form_data);
             return redirect('/product')->with('status', 'New Product Created !');
-            // Product::create($request->all());
         }
 
-        /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
+    public function show($product)
     {
         //Show Products
-        return view('products.show', compact('product'));
+        $products = Product::find($product);
+        return view('products.show', compact('products'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Product $product)
     {
         //Edit Product
         return view('products.edit', compact('product'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Product $product)
     {
-        //
-          $gambar = Product::where('id',$product->id)->first();
-          File::delete($gambar->image);
-
-        //Update for New Config
         $request->validate  ([
             'name' => 'required',
             'price' => 'required|numeric',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'oldimage' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'desc' => 'nullable'
 
         ]);
 
+        // if($request->hasFile('image')){
+        //     $file = $request->file('image');
+        //     $new_name =  rand() . '.' .  $file->getClientOriginalExtension();
+        //     $direction = $file->move('images', $new_name);
 
-        $file = $request->file('image');
-        $new_name =  rand() . '.' .  $file->getClientOriginalExtension();
-        $direction = $file->move('images', $new_name);
 
+        //     $gambar = Product::where('id',$product->id)->first();
+        //     File::delete($gambar->image);
+
+        //     Product::where('id', $product->id)
+        //     ->update([
+        //         'image' => $direction,
+        //     ]);
+        // }
         Product::where('id', $product->id)
                         ->update([
                             'name' => $request->name,
                             'price' => $request->price,
-                            'image' => $direction,
-                            'desc' => $request->desc
+                            'desc' => $request->desc,
+                            'image' => $direction
 
                         ]);
 
         return redirect('/product/'.$product->id)->with('status', 'Product has been Edited!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Product $product)
     {
-        //
+
         $gambar = Product::where('id',$product->id)->first();
         File::delete($gambar->image);
 
