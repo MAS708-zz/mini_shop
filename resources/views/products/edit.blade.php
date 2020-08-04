@@ -31,6 +31,18 @@
                         @error('image')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 
+                    <select name="product_category_id" class="form-control form-control-sm">
+
+                        <option value="">---Select Category---</option>
+
+                        @foreach ($cat as $c)
+                            <option id="{{ $c->id }}" name = "{{ $c->id }}" value = "{{ $c->id }}">
+                                {{ $c->name  }}
+                            </option>
+                        @endforeach
+                         @error('product_category_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </select>
+
                     <div class="form-group">
                         <label for="desc">Description</label>
                     <textarea class="form-control" id="desc" name="desc" rows="3">{{    $product->desc }}</textarea>
