@@ -100,11 +100,11 @@ CREATE TABLE `product_categories` (
 --
 
 INSERT INTO `product_categories` (`id`, `name`, `desc`, `updated_at`, `created_at`, `deleted_at`) VALUES
-(1, 'Makanan', 'WUeenak', '2020-07-23 12:39:04', '2020-07-23 12:39:04', NULL),
-(9, 'Minuman', 'Suegger', '2020-07-24 12:39:04', '2020-07-24 12:39:04', NULL),
-(10, 'Elektronik', 'BeepBoop', '2020-07-26 12:39:04', '2020-07-26 12:39:04', NULL),
-(11, 'Kesehatan', 'Anda Sehat?!!!', '2020-07-28 04:05:40', '2020-07-28 04:05:40', NULL),
-(12, 'Lifestyle', 'Gaya Lur', '2020-08-04 06:42:18', '2020-07-29 09:13:37', '2020-08-04 06:42:18');
+(1, 'Makanan', 'Kategori tentang Makanan', '2020-07-23 12:39:04', '2020-07-23 12:39:04', NULL),
+(9, 'Minuman', 'Kategori tentang Minuman', '2020-07-24 12:39:04', '2020-07-24 12:39:04', NULL),
+(10, 'Elektronik', 'Kategori tentang Elektronik', '2020-07-26 12:39:04', '2020-07-26 12:39:04', NULL),
+(11, 'Kesehatan', 'Kategori tentang Kesehatan', '2020-07-28 04:05:40', '2020-07-28 04:05:40', NULL),
+(12, 'Lifestyle', 'Kategori tentang Gaya Hidup', '2020-08-04 06:42:18', '2020-07-29 09:13:37', '2020-08-04 06:42:18');
 
 -- --------------------------------------------------------
 
