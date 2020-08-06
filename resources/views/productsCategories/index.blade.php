@@ -20,11 +20,15 @@
                                 </div>
                             @endif
                     <ul class="list-group">
-
                         @foreach( $product_categories as $prod )
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <li class="list-group-item">
                             {{ $prod->name }}
-                            <a href ="{{url('/productCategories')}}/{{ $prod->id }}" class="badge badge-info">Show Product</a>
+                            <form action ="{{ route('productCategories.destroy', $prod->id)}}" method="post">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-sm float-right ml-2" onclick="return confirm('Yakin ?')">Delete</button>
+                            </form>
+                            <a href ="{{url('/productCategories')}}/{{ $prod->id }}" class="btn btn-primary btn-sm float-right ml-2">Show Product</a>
                         </li>
                         @endforeach
                     </ul>
@@ -32,3 +36,5 @@
             </div>
         </div>
 @endsection
+
+

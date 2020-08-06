@@ -95,6 +95,7 @@ class productCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Categories::destroy($id);
+        return redirect('/productCategories')->with('status', 'Product has been deleted!');
     }
 }
