@@ -20,7 +20,7 @@
                     <form action ="{{ $products->id }}" method="post" class="d-inline">
                         @method('delete')
                         @csrf
-                        <button type="submit" class="btn btn-danger" >Delete</button>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Sure?')" >Delete</button>
                     </form>
                     <a href ="/product"  class="d-inline">Back</a>
                 </div>
