@@ -19,16 +19,37 @@
                                     {{ session('status') }}
                                 </div>
                             @endif
-                    <ul class="list-group">
-                        
-                        @foreach( $products as $product )
-                        <li class="list-group-item d-flex justify-content-between align-items-center">                        
-                            {{ $product->name }}
-                            <a href ="/product/{{ $product->id }}" class="badge badge-info">detail</a>
-                        </li>
-                        @endforeach
-                    </ul>
                 </div>
             </div>
-        </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th width="50px">No.</th>
+                            <th width="200px">Name</th>
+                            <th width="100px">Category</th>
+                            <th width="100px">Price</th>
+                            <th width="50px">Image</th>
+                            <th width="180px">Action</th>
+                        </tr>
+                    </thead>
+                        @foreach( $products as $product )
+                            <tr>
+                                <td>1.</td>
+                                <td> {{ $product->name }} </td>
+                                <td> {{ $product->category->name }} </td>
+                                <td> {{ $product->price }} </td>
+                                <td> <img src="{{ asset($product->image) }}" class="img-thumbnail" alt="Responsive image" width="100px"> </td>
+                                <td> <a href ="/product/{{ $product->id }}" type="button" class="btn btn-success btn-sm">Detail</a>
+                                        <a href="/edit" type="button" class="btn btn-primary btn-sm">Edit</a>
+                                        <form action ="" method="post" class="d-inline">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm  " onclick="return confirm('Sure?')" >Delete</button>
+                                        </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                </table>
+ 
+    </div>
 @endsection
