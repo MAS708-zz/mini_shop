@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Categories;
+use App\Product;
 
 class productCategoriesController extends Controller
 {
@@ -36,16 +37,23 @@ class productCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate  ([
-            'name' => 'required',
-            'desc' => 'nullable',
-        ]);
+    //    $request->validate  ([
+    //        'name' => 'required',
+    //        'desc' => 'nullable',
+    //    ]);
 
-        $form_data = array(
-            'name' => $request ->name,
-            'desc' => $request ->desc,
-        );
-        Categories::create($form_data);
+        $this->validate($request, [
+            'name'   => 'required',
+            'desc' => 'nullable'
+         ]);
+    
+    //    Category::create($request->all());
+
+    //    $form_data = array(
+    //        'name' => $request ->name,
+    //        'desc' => $request ->desc,
+    //    );
+        Categories::create($request->all());
         return redirect('/productCategories')->with('status', 'New Product Categories Created !');
     }
 
@@ -70,9 +78,9 @@ class productCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Categories $category)
     {
-        //
+        return view('productsCategories.edit', compact('category'));    
     }
 
     /**
@@ -84,7 +92,17 @@ class productCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $this->validate($request, [
+            'name'   => 'required',
+            'desc' => 'nullable',
+         ]);
+        
+        $category = Categories::findOrFail($id);
+
+        $category->update($request->all());
+        return redirect('/productCategories/')->with('status', 'Product Categories has been Edited !');
+
     }
 
     /**

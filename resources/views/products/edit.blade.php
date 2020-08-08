@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group">
                         <label for="price">price</label>
-                        <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" placeholder="Masukkan Kelas" name="price" value="{{ $product->price }}">
+                        <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" placeholder="Masukkan Harga" name="price" value="{{ $product->price }}">
                         @error('price')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 
