@@ -283,7 +283,14 @@
                                     class="hide-menu">Product</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/productCategories')}}"
                         aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
-                        class="hide-menu">Add Categories</span></a></li>
+                        class="hide-menu">Categories</span></a></li>
+                        <li class="list-divider"></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/member')}}"
+                        aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
+                        class="hide-menu">Member</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/memberCategories')}}"
+                        aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
+                        class="hide-menu">Member Categories</span></a></li>
                         <li class="list-divider"></li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/authlogin')}}"
                                 aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span

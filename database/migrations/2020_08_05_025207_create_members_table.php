@@ -16,7 +16,7 @@ class CreateMembersTable extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('member_category_id');
-            $table->string('name');
+            $table->string('full_name');
             $table->date('dob');
             $table->string('address');
             $table->enum('gender', ['wanita', 'pria']);
