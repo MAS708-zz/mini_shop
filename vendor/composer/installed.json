@@ -567,17 +567,17 @@
     },
     {
         "name": "facade/ignition",
-        "version": "2.3.3",
-        "version_normalized": "2.3.3.0",
+        "version": "2.3.5",
+        "version_normalized": "2.3.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/facade/ignition.git",
-            "reference": "cc7df15806aad8a9915148ea4daf7f0dd0be45b5"
+            "reference": "58dc4a8df3d41174c677a370b6779b694e4539e7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/facade/ignition/zipball/cc7df15806aad8a9915148ea4daf7f0dd0be45b5",
-            "reference": "cc7df15806aad8a9915148ea4daf7f0dd0be45b5",
+            "url": "https://api.github.com/repos/facade/ignition/zipball/58dc4a8df3d41174c677a370b6779b694e4539e7",
+            "reference": "58dc4a8df3d41174c677a370b6779b694e4539e7",
             "shasum": ""
         },
         "require": {
@@ -602,7 +602,7 @@
         "suggest": {
             "laravel/telescope": "^3.1"
         },
-        "time": "2020-07-14T11:34:42+00:00",
+        "time": "2020-08-01T21:20:01+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1255,17 +1255,17 @@
     },
     {
         "name": "laravel/framework",
-        "version": "v7.21.0",
-        "version_normalized": "7.21.0.0",
+        "version": "v7.24.0",
+        "version_normalized": "7.24.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/laravel/framework.git",
-            "reference": "3ccdb116524de408fdc00715b6f06a1031ddace9"
+            "reference": "71bfb1f2f89e4e31fba539d43fe287143e635e68"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/laravel/framework/zipball/3ccdb116524de408fdc00715b6f06a1031ddace9",
-            "reference": "3ccdb116524de408fdc00715b6f06a1031ddace9",
+            "url": "https://api.github.com/repos/laravel/framework/zipball/71bfb1f2f89e4e31fba539d43fe287143e635e68",
+            "reference": "71bfb1f2f89e4e31fba539d43fe287143e635e68",
             "shasum": ""
         },
         "require": {
@@ -1378,7 +1378,7 @@
             "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^2.0).",
             "wildbit/swiftmailer-postmark": "Required to use Postmark mail driver (^3.0)."
         },
-        "time": "2020-07-21T14:26:42+00:00",
+        "time": "2020-08-07T15:13:57+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1943,17 +1943,17 @@
     },
     {
         "name": "nesbot/carbon",
-        "version": "2.36.1",
-        "version_normalized": "2.36.1.0",
+        "version": "2.38.0",
+        "version_normalized": "2.38.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/briannesbitt/Carbon.git",
-            "reference": "ee7378a36cc62952100e718bcc58be4c7210e55f"
+            "reference": "d8f6a6a91d1eb9304527b040500f61923e97674b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/ee7378a36cc62952100e718bcc58be4c7210e55f",
-            "reference": "ee7378a36cc62952100e718bcc58be4c7210e55f",
+            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/d8f6a6a91d1eb9304527b040500f61923e97674b",
+            "reference": "d8f6a6a91d1eb9304527b040500f61923e97674b",
             "shasum": ""
         },
         "require": {
@@ -1968,11 +1968,11 @@
             "kylekatarnls/multi-tester": "^2.0",
             "phpmd/phpmd": "^2.8",
             "phpstan/extension-installer": "^1.0",
-            "phpstan/phpstan": "^0.12.30",
+            "phpstan/phpstan": "^0.12.35",
             "phpunit/phpunit": "^7.5 || ^8.0",
             "squizlabs/php_codesniffer": "^3.4"
         },
-        "time": "2020-07-04T12:29:56+00:00",
+        "time": "2020-08-04T19:12:46+00:00",
         "bin": [
             "bin/carbon"
         ],
@@ -3460,17 +3460,17 @@
     },
     {
         "name": "ramsey/uuid",
-        "version": "4.0.1",
-        "version_normalized": "4.0.1.0",
+        "version": "4.1.0",
+        "version_normalized": "4.1.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/ramsey/uuid.git",
-            "reference": "ba8fff1d3abb8bb4d35a135ed22a31c6ef3ede3d"
+            "reference": "988dbefc7878d0a35f12afb4df1f7dd0bd153c43"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ramsey/uuid/zipball/ba8fff1d3abb8bb4d35a135ed22a31c6ef3ede3d",
-            "reference": "ba8fff1d3abb8bb4d35a135ed22a31c6ef3ede3d",
+            "url": "https://api.github.com/repos/ramsey/uuid/zipball/988dbefc7878d0a35f12afb4df1f7dd0bd153c43",
+            "reference": "988dbefc7878d0a35f12afb4df1f7dd0bd153c43",
             "shasum": ""
         },
         "require": {
@@ -3485,7 +3485,7 @@
         },
         "require-dev": {
             "codeception/aspect-mock": "^3",
-            "dealerdirect/phpcodesniffer-composer-installer": "^0.6.2",
+            "dealerdirect/phpcodesniffer-composer-installer": "^0.6.2 || ^0.7.0",
             "doctrine/annotations": "^1.8",
             "goaop/framework": "^2",
             "mockery/mockery": "^1.3",
@@ -3494,8 +3494,8 @@
             "php-mock/php-mock-mockery": "^1.3",
             "php-mock/php-mock-phpunit": "^2.5",
             "php-parallel-lint/php-parallel-lint": "^1.1",
+            "phpbench/phpbench": "^0.17.1",
             "phpstan/extension-installer": "^1.0",
-            "phpstan/phpdoc-parser": "0.4.3",
             "phpstan/phpstan": "^0.12",
             "phpstan/phpstan-mockery": "^0.12",
             "phpstan/phpstan-phpunit": "^0.12",
@@ -3513,7 +3513,7 @@
             "paragonie/random-lib": "Provides RandomLib for use with the RandomLibAdapter",
             "ramsey/uuid-doctrine": "Allows the use of Ramsey\\Uuid\\Uuid as Doctrine field type."
         },
-        "time": "2020-03-29T20:13:32+00:00",
+        "time": "2020-07-28T16:51:01+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -5134,8 +5134,8 @@
     },
     {
         "name": "symfony/polyfill-ctype",
-        "version": "v1.18.0",
-        "version_normalized": "1.18.0.0",
+        "version": "v1.18.1",
+        "version_normalized": "1.18.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-ctype.git",
@@ -5212,8 +5212,8 @@
     },
     {
         "name": "symfony/polyfill-iconv",
-        "version": "v1.18.0",
-        "version_normalized": "1.18.0.0",
+        "version": "v1.18.1",
+        "version_normalized": "1.18.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-iconv.git",
@@ -5291,8 +5291,8 @@
     },
     {
         "name": "symfony/polyfill-intl-grapheme",
-        "version": "v1.18.0",
-        "version_normalized": "1.18.0.0",
+        "version": "v1.18.1",
+        "version_normalized": "1.18.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
@@ -5371,17 +5371,17 @@
     },
     {
         "name": "symfony/polyfill-intl-idn",
-        "version": "v1.18.0",
-        "version_normalized": "1.18.0.0",
+        "version": "v1.18.1",
+        "version_normalized": "1.18.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-intl-idn.git",
-            "reference": "bc6549d068d0160e0f10f7a5a23c7d1406b95ebe"
+            "reference": "5dcab1bc7146cf8c1beaa4502a3d9be344334251"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/bc6549d068d0160e0f10f7a5a23c7d1406b95ebe",
-            "reference": "bc6549d068d0160e0f10f7a5a23c7d1406b95ebe",
+            "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/5dcab1bc7146cf8c1beaa4502a3d9be344334251",
+            "reference": "5dcab1bc7146cf8c1beaa4502a3d9be344334251",
             "shasum": ""
         },
         "require": {
@@ -5393,7 +5393,7 @@
         "suggest": {
             "ext-intl": "For best performance"
         },
-        "time": "2020-07-14T12:35:20+00:00",
+        "time": "2020-08-04T06:02:08+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -5458,8 +5458,8 @@
     },
     {
         "name": "symfony/polyfill-intl-normalizer",
-        "version": "v1.18.0",
-        "version_normalized": "1.18.0.0",
+        "version": "v1.18.1",
+        "version_normalized": "1.18.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-intl-normalizer.git",
@@ -5541,8 +5541,8 @@
     },
     {
         "name": "symfony/polyfill-mbstring",
-        "version": "v1.18.0",
-        "version_normalized": "1.18.0.0",
+        "version": "v1.18.1",
+        "version_normalized": "1.18.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-mbstring.git",
@@ -5620,8 +5620,8 @@
     },
     {
         "name": "symfony/polyfill-php70",
-        "version": "v1.18.0",
-        "version_normalized": "1.18.0.0",
+        "version": "v1.18.1",
+        "version_normalized": "1.18.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-php70.git",
@@ -5699,8 +5699,8 @@
     },
     {
         "name": "symfony/polyfill-php72",
-        "version": "v1.18.0",
-        "version_normalized": "1.18.0.0",
+        "version": "v1.18.1",
+        "version_normalized": "1.18.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-php72.git",
@@ -5774,8 +5774,8 @@
     },
     {
         "name": "symfony/polyfill-php73",
-        "version": "v1.18.0",
-        "version_normalized": "1.18.0.0",
+        "version": "v1.18.1",
+        "version_normalized": "1.18.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-php73.git",
@@ -5852,8 +5852,8 @@
     },
     {
         "name": "symfony/polyfill-php80",
-        "version": "v1.18.0",
-        "version_normalized": "1.18.0.0",
+        "version": "v1.18.1",
+        "version_normalized": "1.18.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-php80.git",
