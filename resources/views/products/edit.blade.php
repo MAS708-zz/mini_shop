@@ -33,13 +33,20 @@
 
                     <select name="product_category_id" class="form-control form-control-sm">
 
+                        <!--option name="{{ $product->category->id }}">{{ $product->category->name }}</option-->
+
+                        
                         <option value="">---Select Category---</option>
 
                         @foreach ($cat as $c)
-                            <option id="{{ $c->id }}" name = "{{ $c->id }}" value = "{{ $c->id }}">
+                            <option id="{{ $c->id }}" name = "{{ $c->id }}" value = "{{ $c->id }}"
+                            @if ($c->id === $product->category->id)
+                            selected
+                            @endif
+                            >
                                 {{ $c->name  }}
                             </option>
-                        @endforeach
+                        @endforeach>
                          @error('product_category_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </select>
 

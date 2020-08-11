@@ -4,7 +4,7 @@
 
 @section('breadcrumb')
     @parent
-    <a href="/">Home</a><a href="{{url('/productCategories')}}">/Product</a>
+    <a href="/">Home</a><a href="{{url('/productCategory')}}">/Product</a>
 @endsection
 
 @section('container')
@@ -24,7 +24,7 @@
                             @csrf
                             <button type="submit" class="btn btn-danger" >Delete</button>
                         </form>
-                        <a href ="/productCategories"  class="d-inline">Back</a>
+                        <a href ="/productCategory"  class="d-inline">Back</a>
                     </div>
             </div>
         </div>

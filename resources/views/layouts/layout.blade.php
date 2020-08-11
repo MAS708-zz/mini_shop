@@ -281,7 +281,7 @@
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/product')}}"
                                 aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
                                     class="hide-menu">Product</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/productCategories')}}"
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/productCategory')}}"
                         aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
                         class="hide-menu">Add Categories</span></a></li>
                         <li class="list-divider"></li>
