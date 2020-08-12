@@ -26,7 +26,7 @@
                             <form action ="{{ route('productCategories.destroy', $prod->id)}}" method="post">
                                 @method('delete')
                                 @csrf
-                                <button type="submit" class="btn btn-danger btn-sm float-right ml-2" onclick="return confirm('Yakin ?')">Delete</button>
+                                <button type="submit" class="btn btn-danger btn-sm float-right ml-2" onclick="return confirm('Sure ?')">Delete</button>
                             </form>
                             <a href ="{{url('/productCategories')}}/{{ $prod->id }}" class="btn btn-primary btn-sm float-right ml-2">Show Product</a>
                         </li>

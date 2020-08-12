@@ -95,7 +95,10 @@ class productCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        Categories::destroy($id);
+        $find = Categories::findOrFail($id);
+        $find->delete();
+        $find->product()->delete();
+        // Categories::destroy($id);
         return redirect('/productCategories')->with('status', 'Product has been deleted!');
     }
 }

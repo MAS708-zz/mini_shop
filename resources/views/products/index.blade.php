@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('subtitle', 'See Our Product Customer')
+@section('subtitle', 'Your Product List, Admin')
 
 @section('breadcrumb')
     @parent
@@ -8,12 +8,13 @@
 @endsection
 
 @section('container')
-    <div class="container">
+
+        <div class="container">
             <div class="row">
                 <div class="col-6">
                         <h1 class="mt-3">Products List</h1>
-                    
-                        <a href="/product/create" class="btn btn-primary my-3">Add New Product</a> 
+
+                        <a href="/product/create" class="btn btn-primary my-3">Add New Product</a>
                             @if (session('status'))
                                 <div class="alert alert-success">
                                     {{ session('status') }}
@@ -21,7 +22,10 @@
                             @endif
                 </div>
             </div>
-                <table class="table table-bordered">
+        </div>
+
+        <div class="col position-static mt-3">
+            <table class="table table-bordered" cellpadding="10"  cellspacing="0">
                     <thead>
                         <tr>
                             <th width="50px">No.</th>
@@ -32,24 +36,27 @@
                             <th width="180px">Action</th>
                         </tr>
                     </thead>
+                    <?php $i = 1;  ?>
                         @foreach( $products as $product )
                             <tr>
-                                <td>1.</td>
+                                <td><?= $i; ?></td>
                                 <td> {{ $product->name }} </td>
                                 <td> {{ $product->category->name }} </td>
                                 <td> {{ $product->price }} </td>
                                 <td> <img src="{{ asset($product->image) }}" class="img-thumbnail" alt="Responsive image" width="100px"> </td>
                                 <td> <a href ="/product/{{ $product->id }}" type="button" class="btn btn-success btn-sm">Detail</a>
-                                        <a href="/edit" type="button" class="btn btn-primary btn-sm">Edit</a>
-                                        <form action ="" method="post" class="d-inline">
+                                        <a href="/product/{{ $product->id }}/edit" type="button" class="btn btn-primary btn-sm">Edit</a>
+                                        <form action ="{{ route('product.destroy', $product->id)}}" method="post" class="d-inline">
                                             @method('delete')
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-sm  " onclick="return confirm('Sure?')" >Delete</button>
                                         </form>
                                 </td>
                             </tr>
+                            <?php $i++;?>
                         @endforeach
-                </table>
- 
-    </div>
+            </table>
+        </div>
+
+
 @endsection

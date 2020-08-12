@@ -47,7 +47,8 @@ class memberController extends Controller
             'member_category_id' => 'required',
             'full_name' => 'required|string',
             'dob' => 'required',
-            'address' => 'nullable'
+            'address' => 'nullable',
+            'gender' => 'in:pria,wanita'
             ]);
 
             //variable request all
@@ -69,8 +70,7 @@ class memberController extends Controller
      */
     public function show($member)
     {
-        $member = Member::find($member);
-        return view('members.show', compact('member'));
+        return view('members.index', compact('member'));
     }
 
     /**
@@ -96,17 +96,15 @@ class memberController extends Controller
     {
         $this->validate  ($request, [
             'member_category_id' => 'required',
-            'name' => 'required|string',
             'full_name' => 'required|string',
-            'dob' => 'required'|'strtotime',
-            'address' => 'nullable',
-            'gender' => 'required'
+            'dob' => 'required',
+            'address' => 'nullable'
             ]);
 
         $member = Member::findOrFail($id);
 
         $member->update($request->all());
-        return redirect('/member/'.$member->id)->with('status', 'Member has been Updated!');
+        return redirect('/member')->with('status', 'Member has been Updated!');
     }
 
     /**

@@ -89,7 +89,9 @@ class memberCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        MemberCategory::destroy($id);
+        $find = MemberCategory::findOrFail($id);
+        $find->delete();
+        $find->member()->delete();
         return redirect('/memberCategories')->with('status', 'Member Categories has been deleted!');
     }
 }

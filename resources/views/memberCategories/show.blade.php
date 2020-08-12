@@ -4,30 +4,49 @@
 
 @section('breadcrumb')
     @parent
-    <a href="/">Home</a><a href="{{url('/productCategories')}}">/Product</a>
+    <a href="/">Home</a><a href="{{url('/memberCategories')}}">/Product</a>
 @endsection
 
 @section('container')
 
-<div class="row position-relative">
-    @foreach ($category as $item)
-     <div class="col">
-            <div class="card" style="width: 18rem;">
-                <img src="{{ asset($item->image) }}" class="img-thumbnail" alt="Responsive image">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $item->name }}</h5>
-                        <p class="card-text">{{ $item->desc }}</p>
-                        <p class="card-text">Category-{{ $name_tag->name }}</p>
-                        <a href="{{url('/product/'.$item->id.'/edit')}}" type="submit" class="btn btn-primary">Edit</a>
-                        <form action ="{{url('/product/'.$item->id)}}" method="post" class="d-inline">
+    <div class="col position-static mt-3">
+        <table class="table table-bordered" cellpadding="10"  cellspacing="0">
+                <thead>
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Date of Birth</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">gender</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+
+
+
+                <?php $i = 1; ?>
+                @foreach ($category as $m)
+                    <tr>
+                        <td> <?= $i; ?> </td>
+                        <td> {{ $m->full_name }} </td>
+                        <td> {{ $name_tag->name }} </td>
+                        <td> {{ $m->dob }} </td>
+                        <td> {{ $m->address }} </td>
+                        <td> {{ $m->gender }} </td>
+                        <td>
+                            <a href="/member/{{ $m->id }}/edit" type="button" class="btn btn-primary btn-sm">Edit</a>
+                            <form action ="{{ route('member.destroy', $m->id)}}" method="post" class="d-inline">
                             @method('delete')
                             @csrf
-                            <button type="submit" class="btn btn-danger" >Delete</button>
-                        </form>
-                        <a href ="/member"  class="d-inline">Back</a>
-                    </div>
-            </div>
-        </div>
-    @endforeach
-</div>
+                            <button type="submit" class="btn btn-danger btn-sm  " onclick="return confirm('Sure?')" >Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php $i++; ?>
+                @endforeach
+
+        </table>
+
+    </div>
 @endsection

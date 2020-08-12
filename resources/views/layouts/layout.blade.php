@@ -227,7 +227,7 @@
                                 <img src="{{asset('../assets/images/users/1.jpg')}}" alt="user" class="rounded-circle"
                                     width="40">
                                 <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
-                                        class="text-dark">Customer</span> <i data-feather="chevron-down"
+                                        class="text-dark">Admin</span> <i data-feather="chevron-down"
                                         class="svg-icon"></i></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
@@ -320,9 +320,8 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
                                         <!--Template BreadCrumbs-->
-                                            @yield('breadcrumb')
+                                        <li class="breadcrumb-item mt-1"> @yield('breadcrumb')</li>
                                         <!--Template BreadCrumbs-->
-                                    </li>
                                 </ol>
                             </nav>
                         </div>
@@ -353,7 +352,7 @@
                             <!-- End Template Content-->
 
                             <!-- footer -->
-                            <footer class="footer text-center text-muted">
+                            <footer class="footer position-sticky text-center text-muted ">
                                 All Rights Reserved by Adminmart. Designed and Developed by <a
                                     href="https://wrappixel.com">WrapPixel</a>.
                             </footer>

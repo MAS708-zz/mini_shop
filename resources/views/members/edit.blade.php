@@ -2,7 +2,7 @@
 @section('subtitle', 'Edit Product')
 @section('breadcrumb')
     @parent
-    <a href="/">Home</a><a href="/product">/Product</a>
+    <a href="/">Home</a><a href="/member">/Product</a>
 @endsection
 @section('container')
     <div class="container">
@@ -10,19 +10,13 @@
             <div class="col-6">
                 <h1 class="mt-3">Form Edit product</h1>
 
-                <form method="POST" action="/product/{{ $product->id }}" enctype="multipart/form-data">
+                <form method="POST" action="/member/{{ $member->id }}" enctype="multipart/form-data">
                 @method('patch')
                 @csrf
 
                 <div class="form-group">
-                    <label for="name">name</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Masukkan Nama" name="name" value="{{ $member->name }}">
-                    @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                </div>
-
-                <div class="form-group">
                     <label for="full_name">Full Name</label>
-                    <input type="text" class="form-control @error('full_name') is-invalid @enderror" id="fullname" placeholder="Insert Full Name" name="full_name" value="{{ $member->full_name }}">
+                    <input type="text" class="form-control @error('full_name') is-invalid @enderror" id="full_name" placeholder="Insert Full Name" name="full_name" value="{{ $member->full_name }}">
                     @error('full_name')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
 
@@ -38,7 +32,20 @@
                     @error('address')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
 
-               <select name="member_category_id" class="form-control form-control-sm">
+                <label for="gender">Gender</label>
+                <select class="form-control mb-3" name="gender" id="gender">
+
+                    @if($member->gender == "pria")
+                        <option value="pria" selected>Pria</option>
+                        <option value="wanita">Wanita</option>
+                    @elseif($member->gender == "wanita")
+                    <option value="pria">Pria</option>
+                    <option value="wanita" selected>Wanita</option>
+                    @endif
+
+                </select>
+
+               <select name="member_category_id" class="form-control form-control-sm mb-3">
                     <option value="">--Select Category Member--</option>
 
                     @foreach ($member_category as $c)
