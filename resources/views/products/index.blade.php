@@ -42,7 +42,7 @@
                                 <td><?= $i; ?></td>
                                 <td> {{ $product->name }} </td>
                                 <td> {{ $product->category->name }} </td>
-                                <td> {{ $product->price }} </td>
+                                <td> Rp. {{ number_format($product->price, 2, ',', '.') }} </td>
                                 <td> <img src="{{ asset($product->image) }}" class="img-thumbnail" alt="Responsive image" width="100px"> </td>
                                 <td> <a href ="/product/{{ $product->id }}" type="button" class="btn btn-success btn-sm">Detail</a>
                                         <a href="/product/{{ $product->id }}/edit" type="button" class="btn btn-primary btn-sm">Edit</a>

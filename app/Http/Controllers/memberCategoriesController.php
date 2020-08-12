@@ -64,9 +64,11 @@ class memberCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(MemberCategory $memberCategory)
     {
-        //
+
+        return view('memberCategories.edit', compact('memberCategory'));
+
     }
 
     /**
@@ -78,7 +80,15 @@ class memberCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $this->validate($request, [
+            'name'   => 'required',
+         ]);
+
+        $memberCategory = MemberCategory::findOrFail($id);
+
+        $memberCategory->update($request->all());
+        return redirect('/memberCategories')->with('status', 'Member Categories has been Edited !');
     }
 
     /**

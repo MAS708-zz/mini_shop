@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('subtitle', 'Add Products')
+@section('subtitle', 'Add Product  Categories')
 
 @section('breadcrumb')
     @parent

@@ -15,13 +15,13 @@
                 @csrf
 
                     <div class="form-group">
-                        <label for="name">name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Masukkan Nama" name="name" value="{{ $product->name }}">
+                        <label for="name">Product Name</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Insert Name" name="name" value="{{ $product->name }}">
                         @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group">
-                        <label for="price">price</label>
-                        <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" placeholder="Masukkan Harga" name="price" value="{{ $product->price }}">
+                        <label for="price">Product Price</label>
+                        <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" placeholder="Insert Price" name="price" value="{{ $product->price }}">
                         @error('price')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 
@@ -34,9 +34,6 @@
                     <select name="product_category_id" class="form-control form-control-sm">
 
                         <!--option name="{{ $product->category->id }}">{{ $product->category->name }}</option-->
-
-                        
-                        <option value="">---Select Category---</option>
 
                         @foreach ($cat as $c)
                             <option id="{{ $c->id }}" name = "{{ $c->id }}" value = "{{ $c->id }}"

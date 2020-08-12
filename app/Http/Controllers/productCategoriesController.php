@@ -37,22 +37,12 @@ class productCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-    //    $request->validate  ([
-    //        'name' => 'required',
-    //        'desc' => 'nullable',
-    //    ]);
 
         $this->validate($request, [
             'name'   => 'required',
             'desc' => 'nullable'
          ]);
-    
-    //    Category::create($request->all());
 
-    //    $form_data = array(
-    //        'name' => $request ->name,
-    //        'desc' => $request ->desc,
-    //    );
         Categories::create($request->all());
         return redirect('/productCategories')->with('status', 'New Product Categories Created !');
     }
@@ -80,7 +70,7 @@ class productCategoriesController extends Controller
      */
     public function edit(Categories $productCategory)
     {
-        return view('productsCategories.edit', compact('productCategory'));    
+        return view('productsCategories.edit', compact('productCategory'));
     }
 
     /**
@@ -92,12 +82,12 @@ class productCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $this->validate($request, [
             'name'   => 'required',
             'desc' => 'nullable',
          ]);
-        
+
         $productCategory = Categories::findOrFail($id);
 
         $productCategory->update($request->all());
@@ -114,9 +104,14 @@ class productCategoriesController extends Controller
     public function destroy($id)
     {
         $find = Categories::findOrFail($id);
+
+            if (!$find->product()->image == NULL){
+                unlink(public_path($find->product()->image));
+            }
+
         $find->delete();
         $find->product()->delete();
-        // Categories::destroy($id);
+
         return redirect('/productCategories')->with('status', 'Product has been deleted!');
     }
 }

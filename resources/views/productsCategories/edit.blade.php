@@ -2,7 +2,7 @@
 @section('subtitle', 'Edit Product Category')
 @section('breadcrumb')
     @parent
-    <a href="{{url('/')}}">Home</a><a href="{{url('/productCategories')}}">/Product</a>
+    <a href="{{url('/')}}">Home</a><a href="{{url('/productCategories')}}">/Product Category</a>
 @endsection
 @section('container')
     <div class="container">

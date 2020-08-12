@@ -44,6 +44,7 @@
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-sm float-right ml-2" onclick="return confirm('Sure ?')">Delete</button>
                                         </form>
+                                        <a href ="{{url('/memberCategories')}}/{{ $m->id}}/edit" type="submit" class="btn btn-success btn-sm float-right ml-2">Edit Member Category</a>
                                         <a href ="{{url('/memberCategories')}}/{{ $m->id }}" class="btn btn-primary btn-sm float-right ml-2">Show Member</a>
                                     </td>
                                 </tr>

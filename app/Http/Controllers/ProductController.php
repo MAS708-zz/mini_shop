@@ -31,7 +31,7 @@ class ProductController extends Controller
 
     return $destination;
 }
-    
+
     public function index()
     {
         //return Product
@@ -49,7 +49,6 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        //
 
         $this->validate  ($request, [
             'name' => 'required|string',
@@ -70,7 +69,6 @@ class ProductController extends Controller
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 })->save($destinationPath.'/'.$input['image']);
-        //        $request->image->compress(public_path('images/'), public_path('images/'), 10);
             }
 
             Product::create($input);
@@ -117,19 +115,18 @@ class ProductController extends Controller
             if (!$product->image == NULL){
                 unlink(public_path($product->image));
             }
-    //        $input['image'] = 'images/'.rand().'.'.$request->image->getClientOriginalExtension();
-    //        $request->image->move(public_path('images/'), $input['image']);
-        $input['image'] = 'images/'.rand().'.'.$request->image->getClientOriginalExtension();
-        $destinationPath = public_path('/');
-        $img = Image::make($request->image->getRealPath());
-        $img->resize(400, null, function ($constraint) {
-            $constraint->aspectRatio();
-            $constraint->upsize();
-        })->save($destinationPath.'/'.$input['image']);
+
+            $input['image'] = 'images/'.rand().'.'.$request->image->getClientOriginalExtension();
+            $destinationPath = public_path('/');
+            $img = Image::make($request->image->getRealPath());
+            $img->resize(400, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })->save($destinationPath.'/'.$input['image']);
         }
 
         $product->update($input);
-        return redirect('/product/'.$product->id)->with('status', 'Product has been Edited!');
+        return redirect('/product')->with('status', 'Product has been Edited!');
     }
 
     /**
