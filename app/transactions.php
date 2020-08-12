@@ -26,7 +26,7 @@ class transactions extends Model
 
     public function member()
         {
-            return $this->hasMany(Member::class, 'id', 'id');
+            return $this->hasMany(Member::class, 'id', 'member_id');
         }
 }
 
