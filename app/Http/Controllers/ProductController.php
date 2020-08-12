@@ -12,6 +12,26 @@ use Image;
 class ProductController extends Controller
 {
 
+    public function compress($source, $destination, $quality)
+{
+
+    $info = getimagesize($source);
+    $image = '';
+
+    if ($info['mime'] == 'image/jpeg')
+        $image = imagecreatefromjpeg($source);
+
+    elseif ($info['mime'] == 'image/gif')
+        $image = imagecreatefromgif($source);
+
+    elseif ($info['mime'] == 'image/png')
+        $image = imagecreatefrompng($source);
+
+    imagejpeg($image, $destination, $quality);
+
+    return $destination;
+}
+
     public function index()
     {
         //return Product
@@ -29,7 +49,6 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        //
 
         $this->validate  ($request, [
             'name' => 'required|string',
@@ -46,7 +65,9 @@ class ProductController extends Controller
                 $input['image'] = 'images/'.rand().'.'.$request->image->getClientOriginalExtension();
                 $destinationPath = public_path('/');
                 $img = Image::make($request->image->getRealPath());
-                $img->resize(200, 200, function ($constraint) {
+                $img->resize(400, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
                 })->save($destinationPath.'/'.$input['image']);
             }
 
@@ -64,7 +85,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         //Edit Product
-        $cat =Categories::all();
+        $cat = Categories::all();
         return view('products.edit', compact('product', 'cat'));
     }
 
@@ -94,12 +115,18 @@ class ProductController extends Controller
             if (!$product->image == NULL){
                 unlink(public_path($product->image));
             }
+
             $input['image'] = 'images/'.rand().'.'.$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('images/'), $input['image']);
+            $destinationPath = public_path('/');
+            $img = Image::make($request->image->getRealPath());
+            $img->resize(400, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })->save($destinationPath.'/'.$input['image']);
         }
 
         $product->update($input);
-        return redirect('/product/'.$product->id)->with('status', 'Product has been Edited!');
+        return redirect('/product')->with('status', 'Product has been Edited!');
     }
 
     /**

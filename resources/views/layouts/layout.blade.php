@@ -227,7 +227,7 @@
                                 <img src="{{asset('../assets/images/users/1.jpg')}}" alt="user" class="rounded-circle"
                                     width="40">
                                 <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
-                                        class="text-dark">Customer</span> <i data-feather="chevron-down"
+                                        class="text-dark">Admin</span> <i data-feather="chevron-down"
                                         class="svg-icon"></i></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
@@ -275,7 +275,10 @@
                     <ul id="sidebarnav">
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/"
                             aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
-                                 class="hide-menu">Home</span></a></li>
+                                class="hide-menu">Home</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/transaction')}}"
+                            aria-expanded="false"><i data-feather="shopping-cart" class="feather-icon"></i><span
+                                class="hide-x">Transaction</span></a></li>
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Menu</span></li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/product')}}"
@@ -283,7 +286,14 @@
                                     class="hide-menu">Product</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/productCategories')}}"
                         aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
-                        class="hide-menu">Add Categories</span></a></li>
+                        class="hide-menu">Product Categories</span></a></li>
+                        <li class="list-divider"></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/member')}}"
+                        aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
+                        class="hide-menu">Member</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/memberCategories')}}"
+                        aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
+                        class="hide-menu">Member Categories</span></a></li>
                         <li class="list-divider"></li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/authlogin')}}"
                                 aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
@@ -313,9 +323,8 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
                                         <!--Template BreadCrumbs-->
-                                            @yield('breadcrumb')
+                                        <li class="breadcrumb-item mt-1"> @yield('breadcrumb')</li>
                                         <!--Template BreadCrumbs-->
-                                    </li>
                                 </ol>
                             </nav>
                         </div>
@@ -346,7 +355,7 @@
                             <!-- End Template Content-->
 
                             <!-- footer -->
-                            <footer class="footer text-center text-muted">
+                            <footer class="footer position-sticky text-center text-muted ">
                                 All Rights Reserved by Adminmart. Designed and Developed by <a
                                     href="https://wrappixel.com">WrapPixel</a>.
                             </footer>

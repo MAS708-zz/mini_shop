@@ -16,14 +16,14 @@
                 <form method="POST" action="{{Route('product.store')}}" enctype="multipart/form-data">
                 @csrf
                     <div class="form-group">
-                        <label for="name">name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Masukkan Nama" name="name" value="{{old('name')}}">
+                        <label for="name">Product Name</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Insert Product Name" name="name" value="{{old('name')}}">
                         @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 
                      <div class="form-group">
-                        <label for="price">price</label>
-                        <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" placeholder="Masukkan harga" name="price" value="{{old('price')}}">
+                        <label for="price">Product Price</label>
+                        <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" placeholder="Insert Product Price" name="price" value="{{old('price')}}">
                         @error('price')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 
@@ -33,7 +33,8 @@
                         @error('image')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 
-                   <select name="product_category_id" class="form-control form-control-sm">
+                    <label for="category">Product Category</label>
+                   <select name="product_category_id" class="form-control form-control-sm" id="category">
                         <option value="">--Select Category--</option>
 
                         @foreach ($cat as $c)
@@ -46,15 +47,9 @@
                         @error('product_category_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </select>
 
-                    {{-- @foreach ($cat as $c)
-
-                            {{ $c->name }}
-
-                    @endforeach --}}
-
                     <div class="form-group">
                         <label for="desc">Description</label>
-                        <textarea class="form-control" id="desc" name="desc" rows="3" value="{{old('desc')}}"></textarea>
+                        <textarea class="form-control" id="desc" name="desc" rows="3" placeholder="Insert Desc Product" value="{{old('desc')}}"></textarea>
                         @error('desc')<div class="invalid-feedback">{{ $desc }}</div>@enderror
                     </div>
 

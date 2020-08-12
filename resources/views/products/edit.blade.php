@@ -15,13 +15,13 @@
                 @csrf
 
                     <div class="form-group">
-                        <label for="name">name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Masukkan Nama" name="name" value="{{ $product->name }}">
+                        <label for="name">Product Name</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Insert Name" name="name" value="{{ $product->name }}">
                         @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group">
-                        <label for="price">price</label>
-                        <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" placeholder="Masukkan Kelas" name="price" value="{{ $product->price }}">
+                        <label for="price">Product Price</label>
+                        <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" placeholder="Insert Price" name="price" value="{{ $product->price }}">
                         @error('price')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 
@@ -30,16 +30,20 @@
                         <input type="file" class="form-control-file" id="image" name="image" value="{{ $product->image }}">
                         @error('image')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
+                    <label for="label">Product Category</label>
+                    <select name="product_category_id" class="form-control form-control-sm mb-2" id="label">
 
-                    <select name="product_category_id" class="form-control form-control-sm">
-
-                        <option value="">---Select Category---</option>
+                        <!--option name="{{ $product->category->id }}">{{ $product->category->name }}</option-->
 
                         @foreach ($cat as $c)
-                            <option id="{{ $c->id }}" name = "{{ $c->id }}" value = "{{ $c->id }}">
+                            <option id="{{ $c->id }}" name = "{{ $c->id }}" value = "{{ $c->id }}"
+                            @if ($c->id === $product->category->id)
+                            selected
+                            @endif
+                            >
                                 {{ $c->name  }}
                             </option>
-                        @endforeach
+                        @endforeach>
                          @error('product_category_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </select>
 

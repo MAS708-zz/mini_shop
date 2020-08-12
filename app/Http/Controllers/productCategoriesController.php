@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Categories;
+use App\Product;
 
 class productCategoriesController extends Controller
 {
@@ -36,16 +37,13 @@ class productCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate  ([
-            'name' => 'required',
-            'desc' => 'nullable',
-        ]);
 
-        $form_data = array(
-            'name' => $request ->name,
-            'desc' => $request ->desc,
-        );
-        Categories::create($form_data);
+        $this->validate($request, [
+            'name'   => 'required',
+            'desc' => 'nullable'
+         ]);
+
+        Categories::create($request->all());
         return redirect('/productCategories')->with('status', 'New Product Categories Created !');
     }
 
@@ -55,10 +53,10 @@ class productCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($productCategories)
+    public function show($productCategory)
     {
-        $category = Categories::find($productCategories)->product;
-        $name_tag = Categories::find($productCategories);
+        $category = Categories::find($productCategory)->product;
+        $name_tag = Categories::find($productCategory);
 
         return view('productsCategories.show', compact( 'category' ), compact( 'name_tag' ));
 
@@ -70,9 +68,9 @@ class productCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Categories $productCategory)
     {
-        //
+        return view('productsCategories.edit', compact('productCategory'));
     }
 
     /**
@@ -84,7 +82,17 @@ class productCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $this->validate($request, [
+            'name'   => 'required',
+            'desc' => 'nullable',
+         ]);
+
+        $productCategory = Categories::findOrFail($id);
+
+        $productCategory->update($request->all());
+        return redirect('/productCategories')->with('status', 'Product Categories has been Edited !');
+
     }
 
     /**
@@ -95,7 +103,19 @@ class productCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        Categories::destroy($id);
+        $find = Categories::findOrFail($id);
+
+
+        $path = public_path("images/{$find->product($id)->image}");
+
+        if (File::exists($path)) {
+            //File::delete($path);
+            unlink($path);
+        }
+
+        $find->delete();
+        $find->product()->delete();
+
         return redirect('/productCategories')->with('status', 'Product has been deleted!');
     }
 }

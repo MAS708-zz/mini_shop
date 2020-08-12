@@ -22,4 +22,9 @@ class Product extends Model
             {
                return $this->belongsTo(Categories::class, 'product_category_id', 'id');
             }
+
+            public function transaction()
+            {
+                return $this->belongsTo(transactions::class, 'product_id', 'id');
+            }
 }
