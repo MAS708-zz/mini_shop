@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('subtitle', 'Your Product List, Admin')
+@section('subtitle', 'Your Transaction List, Admin')
 
 @section('breadcrumb')
     @parent
@@ -29,7 +29,7 @@
                     <thead>
                         <tr>
                             <th >No.</th>
-                            <th >Customer</th>
+                            <th >Member</th>
                             <th >Product</th>
                             <th >Quantity</th>
                             <th >Discount</th>
@@ -49,9 +49,8 @@
                                 <td> Rp. {{ number_format($tr->total, 2, ',', '.') }} </td>
                                 <td> <img src="{{ asset( $tr->product[0]['image'] ) }}" class="img-thumbnail" alt="Responsive image" width="100px"> </td>
                                 <td>
-                                        <a href ="/transaction/{{ $tr->id }}" type="button" class="btn btn-success btn-sm">Detail</a>
-                                        <a href="/transaction/{{ $tr->id }}" type="button" class="btn btn-primary btn-sm">Edit</a>
-                                        <form action ="#" method="post" class="d-inline">
+                                        <a href ="/transaction/{{ $tr->id }}" type="button" class="btn btn-success btn-sm mt-2 mb-2">Detail</a>
+                                        <form action ="{{ route('transaction.destroy', $tr->id)}}" method="post" class="d-inline mt-2 mb-2">
                                             @method('delete')
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-sm  " onclick="return confirm('Sure?')" >Delete</button>
