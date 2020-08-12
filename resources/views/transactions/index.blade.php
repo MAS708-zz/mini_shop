@@ -35,7 +35,7 @@
                             <th >Discount</th>
                             <th >Total</th>
                             <th >Image</th>
-                            <th >Action</th>
+                            <th width="50px" >Action</th>
                         </tr>
                     </thead>
                     <?php $i = 1;  ?>
