@@ -12,6 +12,26 @@ use Image;
 class ProductController extends Controller
 {
 
+    public function compress($source, $destination, $quality)
+{
+
+    $info = getimagesize($source);
+    $image = '';
+
+    if ($info['mime'] == 'image/jpeg')
+        $image = imagecreatefromjpeg($source);
+
+    elseif ($info['mime'] == 'image/gif')
+        $image = imagecreatefromgif($source);
+
+    elseif ($info['mime'] == 'image/png')
+        $image = imagecreatefrompng($source);
+
+    imagejpeg($image, $destination, $quality);
+
+    return $destination;
+}
+    
     public function index()
     {
         //return Product
@@ -46,8 +66,11 @@ class ProductController extends Controller
                 $input['image'] = 'images/'.rand().'.'.$request->image->getClientOriginalExtension();
                 $destinationPath = public_path('/');
                 $img = Image::make($request->image->getRealPath());
-                $img->resize(200, 200, function ($constraint) {
+                $img->resize(400, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
                 })->save($destinationPath.'/'.$input['image']);
+        //        $request->image->compress(public_path('images/'), public_path('images/'), 10);
             }
 
             Product::create($input);
@@ -94,8 +117,15 @@ class ProductController extends Controller
             if (!$product->image == NULL){
                 unlink(public_path($product->image));
             }
-            $input['image'] = 'images/'.rand().'.'.$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('images/'), $input['image']);
+    //        $input['image'] = 'images/'.rand().'.'.$request->image->getClientOriginalExtension();
+    //        $request->image->move(public_path('images/'), $input['image']);
+        $input['image'] = 'images/'.rand().'.'.$request->image->getClientOriginalExtension();
+        $destinationPath = public_path('/');
+        $img = Image::make($request->image->getRealPath());
+        $img->resize(400, null, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        })->save($destinationPath.'/'.$input['image']);
         }
 
         $product->update($input);

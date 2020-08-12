@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group">
                         <label for="price">price</label>
-                        <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" placeholder="Masukkan Kelas" name="price" value="{{ $product->price }}">
+                        <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" placeholder="Masukkan Harga" name="price" value="{{ $product->price }}">
                         @error('price')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 
@@ -33,13 +33,20 @@
 
                     <select name="product_category_id" class="form-control form-control-sm">
 
+                        <!--option name="{{ $product->category->id }}">{{ $product->category->name }}</option-->
+
+                        
                         <option value="">---Select Category---</option>
 
                         @foreach ($cat as $c)
-                            <option id="{{ $c->id }}" name = "{{ $c->id }}" value = "{{ $c->id }}">
+                            <option id="{{ $c->id }}" name = "{{ $c->id }}" value = "{{ $c->id }}"
+                            @if ($c->id === $product->category->id)
+                            selected
+                            @endif
+                            >
                                 {{ $c->name  }}
                             </option>
-                        @endforeach
+                        @endforeach>
                          @error('product_category_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </select>
 
