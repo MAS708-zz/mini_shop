@@ -27,7 +27,7 @@ class Member extends Model
 
     public function transaction()
             {
-                return $this->belongsTo(transactions::class, 'id', 'id');
+                return $this->belongsTo(transactions::class, 'member_id', 'id');
             }
 
 }
