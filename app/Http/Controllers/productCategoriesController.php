@@ -54,7 +54,7 @@ class productCategoriesController extends Controller
     //        'desc' => $request ->desc,
     //    );
         Categories::create($request->all());
-        return redirect('/productCategory')->with('status', 'New Product Categories Created !');
+        return redirect('/productCategories')->with('status', 'New Product Categories Created !');
     }
 
     /**
@@ -101,7 +101,7 @@ class productCategoriesController extends Controller
         $productCategory = Categories::findOrFail($id);
 
         $productCategory->update($request->all());
-        return redirect('/productCategory')->with('status', 'Product Categories has been Edited !');
+        return redirect('/productCategories')->with('status', 'Product Categories has been Edited !');
 
     }
 
@@ -114,6 +114,6 @@ class productCategoriesController extends Controller
     public function destroy($id)
     {
         Categories::destroy($id);
-        return redirect('/productCategory')->with('status', 'Product has been deleted!');
+        return redirect('/productCategories')->with('status', 'Product has been deleted!');
     }
 }

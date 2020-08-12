@@ -4,7 +4,7 @@
 
 @section('breadcrumb')
     @parent
-        <a href="/">Home</a><a href="/productCategory">/Product</a>
+        <a href="/">Home</a><a href="/productCategories">/Product</a>
 @endsection
 
 @section('container')
@@ -13,7 +13,7 @@
             <div class="col-6">
                 <h1 class="mt-3">Add New Categories</h1>
 
-                <form method="POST" action="{{Route('productCategory.store')}}" enctype="multipart/form-data">
+                <form method="POST" action="{{Route('productCategories.store')}}" enctype="multipart/form-data">
                 @csrf
                     <div class="form-group">
                         <label for="name">name</label>

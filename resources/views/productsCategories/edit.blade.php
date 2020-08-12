@@ -2,7 +2,7 @@
 @section('subtitle', 'Edit Product Category')
 @section('breadcrumb')
     @parent
-    <a href="{{url('/')}}">Home</a><a href="{{url('/productCategory')}}">/Product</a>
+    <a href="{{url('/')}}">Home</a><a href="{{url('/productCategories')}}">/Product</a>
 @endsection
 @section('container')
     <div class="container">
@@ -10,7 +10,7 @@
             <div class="col-6">
                 <h1 class="mt-3">Form Edit product category</h1>
 
-                <form method="POST" action="/productCategory/{{ $productCategory->id }}" enctype="multipart/form-data">
+                <form method="POST" action="/productCategories/{{ $productCategory->id }}" enctype="multipart/form-data">
                 @method('patch')
                 @csrf
 
