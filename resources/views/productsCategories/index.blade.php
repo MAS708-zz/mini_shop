@@ -8,10 +8,17 @@
 @endsection
 
 @section('container')
+
     <div class="container">
             <div class="row">
                 <div class="col-6">
                         <h1 class="mt-3">Categories List</h1>
+                        <a href="{{url('/productCategories/create')}}" class="btn btn-primary my-3">Add New Categories</a>
+                            @if (session('status'))
+                                <div class="alert alert-success">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
 
                 </div>
             </div>

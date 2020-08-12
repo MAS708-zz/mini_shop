@@ -275,7 +275,10 @@
                     <ul id="sidebarnav">
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/"
                             aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
-                                 class="hide-menu">Home</span></a></li>
+                                class="hide-menu">Home</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/transaction')}}"
+                            aria-expanded="false"><i data-feather="shopping-cart" class="feather-icon"></i><span
+                                class="hide-x">Transaction</span></a></li>
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Menu</span></li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/product')}}"

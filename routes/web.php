@@ -1,5 +1,6 @@
 <?php
 
+use App\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +21,9 @@ Route::resources([
     'product' => 'ProductController',
     'productCategories' => 'productCategoriesController',
     'member' => 'memberController',
-    'memberCategories' => 'memberCategoriesController'
+    'memberCategories' => 'memberCategoriesController',
+    'transaction' => 'transactionController'
+
 ]);
 
 //Route product
