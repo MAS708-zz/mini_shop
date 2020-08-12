@@ -25,4 +25,9 @@ class Member extends Model
 
     }
 
+    public function transaction()
+            {
+                return $this->belongsTo(transactions::class, 'id', 'id');
+            }
+
 }

@@ -105,9 +105,13 @@ class productCategoriesController extends Controller
     {
         $find = Categories::findOrFail($id);
 
-            if (!$find->product()->image == NULL){
-                unlink(public_path($find->product()->image));
-            }
+
+        $path = public_path("images/{$find->product($id)->image}");
+
+        if (File::exists($path)) {
+            //File::delete($path);
+            unlink($path);
+        }
 
         $find->delete();
         $find->product()->delete();
