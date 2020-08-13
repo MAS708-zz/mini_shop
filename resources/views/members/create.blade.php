@@ -58,7 +58,7 @@
                         @error('product_category_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </select>
 
-                    <button type="submit" class="btn btn-primary my-3">Create</button>
+                    <button type="submit" class="btn btn-primary my-3" onclick="this.disabled=true;this.value='Submitting...'; this.form.submit();">Create</button>
                 </form>
 
             </div>

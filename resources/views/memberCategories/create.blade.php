@@ -20,7 +20,7 @@
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Masukkan Nama" name="name" value="{{old('name')}}">
                         @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
-                    <button type="submit" class="btn btn-primary my-3">Create</button>
+                    <button type="submit" class="btn btn-primary my-3" onclick="this.disabled=true;this.value='Submitting...'; this.form.submit();">Create</button>
                 </form>
 
             </div>

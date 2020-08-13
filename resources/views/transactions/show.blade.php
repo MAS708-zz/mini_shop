@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3>Detail Transaksi</h3>
-
+                    <a href ="/transaction" type="button" class="btn btn-success btn-sm mb-3">Back</a>
                     <table class="table table-bordered">
                                 <tr><td>
                                     <div class="col-md-12">
@@ -36,7 +36,7 @@
 
                                 <tr><td>
                                     <div class="col-md-12">
-                                        Discount : {{ $transaction->discount }}
+                                        Discount : {{ $transaction->discount }}%
                                     </div>
                                 </td></tr>
 
@@ -46,12 +46,20 @@
                                     </div>
                                 </td></tr>
 
+
+
+
                         </table>
             </div>
         </div>
     </div>
         <div class="col-md-6">
             <div class="card">
+                <div class="card-header">
+                    <div class="mt-1">
+                        Time : {{ $transaction->created_at }}
+                    </div>
+                </div>
                 <div class="card-body">
                     <div class="mt-4">
                         <div class="text-center">

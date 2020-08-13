@@ -75,7 +75,7 @@ class transactionController extends Controller
             $item = Product::find($finder);
             $data_price = $item->price;
 
-        $disc = $data_price * $input['discount']/100;
+        $disc = $data_price * $input['quantity'] * $input['discount']/100;
         $input['total'] = $data_price * $input['quantity'] - $disc;
 
 
