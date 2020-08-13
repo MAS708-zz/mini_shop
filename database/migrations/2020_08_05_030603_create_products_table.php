@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->mediumText('image');
             $table->unsignedBigInteger('product_category_id');
-            $table->text('desc');
+            $table->text('desc')->nullable();
             $table->string('price');
             $table->timestamps();
             $table->softDeletes();

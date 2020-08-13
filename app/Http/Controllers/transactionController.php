@@ -59,26 +59,27 @@ class transactionController extends Controller
 
 
         $input = $request->all();
-        $input['trx_number'] = null;
 
+        $input['trx_number'] = null;
         $input['trx_number'] = $imp . rand(100,999) ;
 
         $finder = $input['product_id'];
-        $item = Product::find($finder);
-        $data_price = $item->price;
-
-
-        $input['discount'] = 0;
-
-            $disc = $data_price * $input['discount']/100;
-            $input['total'] = $data_price * $input['quantity'] - $disc;
-
-
 
         $this->validate  ($request, [
             'member_id' => 'required',
             'product_id' => 'required',
+            'quantity' => 'required|numeric',
+            'discount' => 'nullable|numeric'
             ]);
+
+            $item = Product::find($finder);
+            $data_price = $item->price;
+
+        $disc = $data_price * $input['discount']/100;
+        $input['total'] = $data_price * $input['quantity'] - $disc;
+
+
+
 
         transactions::create($input);
         return redirect('/transaction')->with('status', 'New Transactions has been Created !');

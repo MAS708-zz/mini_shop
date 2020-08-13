@@ -18,7 +18,7 @@ class CreateMembersTable extends Migration
             $table->unsignedBigInteger('member_category_id');
             $table->string('full_name');
             $table->date('dob');
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->enum('gender', ['wanita', 'pria']);
             $table->string('barcode');
             $table->timestamps();

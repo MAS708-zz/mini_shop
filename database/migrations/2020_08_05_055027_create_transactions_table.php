@@ -19,7 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->unsignedBigInteger('member_id');
             $table->unsignedBigInteger('product_id');
             $table->integer('quantity');
-            $table->integer('discount');
+            $table->integer('discount')->nullable();
             $table->integer('total');
             $table->timestamps();
             $table->softDeletes();
