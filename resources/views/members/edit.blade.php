@@ -44,9 +44,9 @@
                     @endif
 
                 </select>
-
-               <select name="member_category_id" class="form-control form-control-sm mb-3">
-                    <option value="">--Select Category Member--</option>
+                <label for="category">Member Category</label>
+               <select name="member_category_id" class="form-control form-control-sm mb-3" id="category">
+                      <!--option name="{{ $member->category->id }}">{{ $member->category->name }}</option-->
 
                     @foreach ($member_category as $c)
                         <option id="{{ $c->id }}" name = "{{ $c->id }}" value = "{{ $c->id }}"

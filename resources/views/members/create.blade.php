@@ -35,16 +35,17 @@
                         @error('address')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 
+                    <label for="gender">Gender :</label>
+                    <select class="form-control mb-3" name="gender" id="gender">
 
-                    <select class="form-control mb-3" name="gender">
-
-                        <option value="" selected>Choose Gender--</option>
+                        <option value="" selected>--Choose Gender--</option>
                         <option value="wanita">Wanita</option>
                         <option value="pria" >Pria</option>
 
                     </select>
 
-                   <select name="member_category_id" class="form-control form-control-sm">
+                    <label for="category">Member Category</label>
+                   <select name="member_category_id" class="form-control form-control-sm" id="category">
                         <option value="">--Select Category Member--</option>
 
                         @foreach ($category as $c)

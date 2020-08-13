@@ -30,8 +30,8 @@
                         <input type="file" class="form-control-file" id="image" name="image" value="{{ $product->image }}">
                         @error('image')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
-
-                    <select name="product_category_id" class="form-control form-control-sm">
+                    <label for="label">Product Category</label>
+                    <select name="product_category_id" class="form-control form-control-sm mb-2" id="label">
 
                         <!--option name="{{ $product->category->id }}">{{ $product->category->name }}</option-->
 
