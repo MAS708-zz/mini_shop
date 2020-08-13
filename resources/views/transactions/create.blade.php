@@ -36,9 +36,9 @@
                         </td></tr>
 
                         <tr><td>
-                            <div class="col-md-12">
+                            <div class="col-md-12 selectProduct">
                                 <label for="prod">Select Product *</label>
-                                <select name="product_id" class="form-control form-control-sm selectId @error('product_id') is-invalid @enderror" id="prod">
+                            <select name="product_id" class="form-control form-control-sm selectIdForm @error('product_id') is-invalid @enderror" data-id="{{ $prod_tr[0]['id'] }}">
                                      <option value="">--Select Product--</option>
                                      @foreach ($prod_id as $pd)
                                          <option class="optionId" id="{{ $pd->id }}" name = "{{ $pd->id }}" value = "{{ $pd->id }}"
@@ -68,7 +68,7 @@
                                 @error('discount')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
                         </td></tr>
-                        <button type="submit" class="btn btn-primary my-3">Create</button>
+                        <button type="submit" class="btn btn-primary my-3" onclick="this.disabled=true;this.value='Submitting...'; this.form.submit();">Create</button>
                     </form>
                 </table>
             </div>
@@ -78,7 +78,8 @@
             <div class="card">
                 <div class="card-body">
                     <div class="mt-4">
-                        <div class="text-center">
+                        <div class="text-center imageContainer">
+                            <img src="" class="img-thumbnail imgSrc" width="200px" id="img">
                         </div>
                     </div>
                 </div>
@@ -92,17 +93,20 @@
     <script>
         (function(){
 
-            $('.optionId').on('change', function() {
-                var id = $(this).attr('id')
+            $('.selectIdForm').on('change', function() {
+
+                // var id = $(".optionId").attr('id')
+                const id = $(this).data('id');
+
                 $.ajax({
-                  type: "GET",
-                  url: '{{ url("/transaction") }}' + '/' + id,
-                  data: {
-                    'name': this.value,
-                  },
+                  type: "post",
+                  url: "{{ url('transaction/create') }}",
+                  data: { id : id },
+                  dataType: 'json',
                   success: function(data) {
-                    window.location.href = '{{ url('/transaction/create') }}';
-                    $('#formModalLabel').html('Edit Data mahasiswa');
+                    $("#img").attr("src",data.image);
+                  }else{
+                      alert('product not selected!')
                   }
                 });
 

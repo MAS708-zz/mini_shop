@@ -45,7 +45,7 @@
                                 <td> {{ $tr->member[0]['full_name'] }} </td>
                                 <td> {{ $tr->product[0]['name'] }} </td>
                                 <td> {{ $tr->quantity }} </td>
-                                <td> {{ $tr->discount }} </td>
+                                <td> {{ $tr->discount }}% </td>
                                 <td> Rp. {{ number_format($tr->total, 2, ',', '.') }} </td>
                                 <td> <img src="{{ asset( $tr->product[0]['image'] ) }}" class="img-thumbnail" alt="Responsive image" width="100px"> </td>
                                 <td>
